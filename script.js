@@ -1,6 +1,4 @@
-/* Pretend this is enqueued via functions.php -> wp_enqueue_script('theme') */
 (function(){
-  // Mobile nav toggle
   const toggle = document.querySelector('.nav-toggle');
   const menu = document.getElementById('nav-menu');
   if(toggle && menu){
@@ -10,7 +8,6 @@
     });
   }
 
-  // Smooth scrolling (enhanced for browsers without CSS behavior)
   document.querySelectorAll('a[href^="#"]').forEach(a => {
     a.addEventListener('click', (e) => {
       const id = a.getAttribute('href').slice(1);
@@ -23,7 +20,6 @@
     });
   });
 
-  // Intersection Observer for reveal-on-scroll
   const obs = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if(entry.isIntersecting){
@@ -35,7 +31,6 @@
 
   document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
 
-  // Animate skill bars
   const skillBars = document.querySelectorAll('.meter');
   const animateSkills = (entries) => {
     entries.forEach(entry => {
@@ -50,7 +45,6 @@
   const skillObs = new IntersectionObserver(animateSkills, { threshold: 0.3 });
   skillBars.forEach(m => skillObs.observe(m));
 
-  // Contact form demo handler (no backend)
   const form = document.getElementById('contact-form');
   if(form){
     form.addEventListener('submit', (e) => {
@@ -58,7 +52,7 @@
       const name = (form.querySelector('#name') || {}).value || 'there';
       const toast = form.querySelector('.toast');
       if(toast){
-        toast.textContent = `Thanks, ${name}! Your message has been noted (demo).`;
+        toast.textContent = `Thanks, ${name}! Your message has been noted.`;
         toast.style.display = 'block';
         setTimeout(() => toast.style.display = 'none', 3500);
       }
@@ -66,11 +60,9 @@
     });
   }
 
-  // Year in footer
   const y = document.getElementById('year');
   if(y){ y.textContent = new Date().getFullYear(); }
 })();
-// Typewriter Effect for tagline
 const typewriterEl = document.getElementById('typewriter');
 if (typewriterEl) {
   const words = ["Aspiring Game Developer", "Unity Enthusiast", "Roblox Creator", "Scratch Veteran"];
